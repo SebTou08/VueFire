@@ -1,28 +1,50 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >    <h1>DEM</h1></v-app-bar>
+    <div class="containerMain">
+      <h2>sdsadas</h2>
+      <v-radio-group v-model="radioGroup">
+        <v-radio
+            v-for="n in 3"
+            :key="n"
+            :label="`Radio ${n}`"
+            :value="n"
+        ></v-radio>
+      </v-radio-group>
+      <form-component v-if="radioGroup===1"></form-component>
+      <colegios v-if="radioGroup===2"></colegios>
+    </div>
+  </v-app>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import FormComponent from "@/components/formComponent";
+import Colegios from "@/components/colegios";
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
-}
+    Colegios,
+    FormComponent
+
+  },
+  data () {
+    return {
+      radioGroup: 1,
+    }
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.containerMain{
+  padding-top: 5%;
 }
 </style>
